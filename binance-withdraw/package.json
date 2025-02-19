@@ -1,0 +1,32 @@
+{
+  "name": "binance-withdraw",
+  "version": "1.0.0",
+  "private": true,
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder --win portable"
+  },
+  "dependencies": {
+    "axios": "^1.7.9",
+    "crypto-js": "^4.2.0"
+  },
+  "devDependencies": {
+    "electron": "^28.2.0",
+    "electron-builder": "^24.9.1"
+  },
+  "build": {
+    "appId": "com.binance.withdraw",
+    "productName": "币安批量提现",
+    "win": {
+      "target": "portable",
+      "icon": "assets/icon.ico"
+    },
+    "portable": {
+      "splashImage": "assets/splash.png"
+    },
+    "directories": {
+      "output": "dist/portable"
+    }
+  }
+}

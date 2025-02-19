@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>批量提现系统</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>批量提现系统</h1>
+
+    <!-- API 配置部分 -->
+    <div class="section">
+      <h2>API配置</h2>
+      <div class="form-group">
+        <input type="text" id="apiKey" class="form-control" placeholder="API Key">
+      </div>
+      <div class="form-group">
+        <input type="password" id="secretKey" class="form-control" placeholder="Secret Key">
+      </div>
+      <button onclick="readBalance()" class="btn-primary">读取余额</button>
+    </div>
+
+    <!-- 批量提现地址部分 -->
+    <div class="section">
+      <h2>批量提现地址</h2>
+      <div class="form-group">
+        <select id="coin" class="form-control" onchange="updateNetworks()">
+          <option value="">选择币种</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <select id="network" class="form-control">
+          <option value="">选择网络</option>
+        </select>
+      </div>
+      <div class="form-params">
+        <div class="param-group">
+          <label>最小金额</label>
+          <input type="number" id="minAmount" class="form-control" value="0">
+        </div>
+        <div class="param-group">
+          <label>最大金额</label>
+          <input type="number" id="maxAmount" class="form-control" value="0">
+        </div>
+        <div class="param-group">
+          <label>小数</label>
+          <input type="number" id="decimals" class="form-control" value="2">
+        </div>
+      </div>
+      <div class="form-params">
+        <div class="param-group">
+          <label>最小延迟(秒)</label>
+          <input type="number" id="minDelay" class="form-control" value="1">
+        </div>
+        <div class="param-group">
+          <label>最大延迟(秒)</label>
+          <input type="number" id="maxDelay" class="form-control" value="5">
+        </div>
+      </div>
+      <button onclick="generateAddresses()" class="btn-secondary">生成随机金额</button>
+      <div class="address-list">
+        <textarea id="addressList" class="form-control" rows="10" placeholder="提现地址批列表"></textarea>
+      </div>
+      <div class="button-group">
+        <button onclick="submitWithdraw()" class="btn-primary">提交提现</button>
+        <button onclick="stopWithdraw()" class="btn-danger" id="stopBtn" style="display: none;">停止提现</button>
+      </div>
+    </div>
+
+    <!-- 提现状态部分 -->
+    <div class="section">
+      <h2>提现状态</h2>
+      <div id="withdrawStatus">
+        <p>共 0 条记录</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="renderer.js"></script>
+</body>
+</html> 
